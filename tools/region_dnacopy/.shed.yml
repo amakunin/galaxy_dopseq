@@ -1,0 +1,9 @@
+name: region_dnacopy
+owner: drevoz
+description: Finds regions present on chromosomes
+long_description: R script to find regions present on sequenced chromosomes. Underlying DNAcopy package included.
+homepage_url: 
+remote_repository_url: 
+categories:
+- Genomic Interval Operations
+type: unrestricted

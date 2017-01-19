@@ -1,0 +1,29 @@
+<tool id="region_dnacopy" name="Target regions on chromosomes" version="0.1.0">
+    <requirements>
+    </requirements>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command><![CDATA[
+        Rscript $__tool_directory__/region_dnacopy.R "$input1" "$input2" "$output1" "$output2" "$sample"
+    ]]></command>
+    <inputs>
+        <param type="data" name="input1" format="bed" label="BED file with non-overlapping genomic positions"/>
+        <param type="data" name="input2" format="tabular" label="Tab-separated file with chromosome names and their sizes"/>
+        <param type="text" name="sample" value="Test" label="Sample name" />
+    </inputs>
+    <outputs>
+        <data name="output1" format="pdf" label="${tool.name} on ${on_string}: PDF"/>
+        <data name="output2" format="tabular" label="${tool.name} on ${on_string}: tabular"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="1.bed"/>
+            <param name="input2" value="1.sizes"/>
+            <output name="output2" file="1.tsv"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+        This tools infers regions present on chromosomes based on BED file with non-overlapping positions covered by reads and a tab-separated file with chromosome names and their sizes. Outputs pdf plot of pairwise distances (lower in target regions) and tabular file with inferred regions and their parameters. Sort it by ascending pd.mean (mean pairwise distance between consecutive positions) to get top target regions.
+    ]]></help>
+</tool>

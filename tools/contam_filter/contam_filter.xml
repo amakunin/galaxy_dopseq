@@ -1,0 +1,28 @@
+<tool id="contam_filter" name="Filter contaminant reads" version="0.1.0">
+    <requirements>
+    </requirements>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="python"><![CDATA[
+        contam_filter.py $minq "$input1" "$input2" "$output1"
+    ]]></command>
+    <inputs>
+        <param type="integer" name="minq" value="20" min="0" label="Minimum mapping quality in filtered output" help="By decreasing this value, you will include repetitive and low-quality aligments into downstream analysis."/>
+        <param type="data" name="input1" format="bam" />
+        <param type="data" name="input2" format="bam" />
+    </inputs>
+    <outputs>
+        <data name="output1" format="bam" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="test.mm10.ns.bam"/>
+            <param name="input2" value="test.hg19.ns.bam"/>
+            <output name="output1" file="test.mm10.filter.bam"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+        This tool filters contaminant reads based on BAM alignments of same reads to target and contaminant genomes.
+    ]]></help>
+</tool>
