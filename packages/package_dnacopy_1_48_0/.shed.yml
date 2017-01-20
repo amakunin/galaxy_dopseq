@@ -1,0 +1,11 @@
+name: package_dnacopy_1_48_0
+owner: drevoz
+description: Contains a tool dependency definition that downloads and extracts version
+  1.48.0 of DNAcopy R package.
+homepage_url: https://bioconductor.org/packages/release/bioc/html/DNAcopy.html
+long_description: |
+    Implements the circular binary segmentation (CBS) algorithm to segment DNA copy number data and identify genomic regions with abnormal copy number.
+remote_repository_url: https://github.com/drevoz/galaxy_dopseq/tree/master/packages/package_dnacopy_1_48_0
+type: tool_dependency_definition
+categories:
+- Tool Dependency Packages

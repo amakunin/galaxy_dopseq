@@ -1,5 +1,8 @@
-<tool id="region_dnacopy" name="Target regions on chromosomes" version="0.1.0">
+<tool id="region_dnacopy" name="Target regions" version="0.1.0">
+    <description> on chromosomes</description>
     <requirements>
+        <requirement type="package" version="3.2.1">R</requirement>
+        <requirement type="package" version="1.48.0">dnacopy</requirement>
     </requirements>
     <stdio>
         <exit_code range="1:" />
@@ -8,13 +11,13 @@
         Rscript $__tool_directory__/region_dnacopy.R "$input1" "$input2" "$output1" "$output2" "$sample"
     ]]></command>
     <inputs>
-        <param type="data" name="input1" format="bed" label="BED file with non-overlapping genomic positions"/>
-        <param type="data" name="input2" format="tabular" label="Tab-separated file with chromosome names and their sizes"/>
-        <param type="text" name="sample" value="Test" label="Sample name" />
+        <param type="data" name="input1" format="bed" label="BED file with non-overlapping genomic positions and coverage data in 4th column (can be generated with bedtools merge -c 1 count)"/>
+        <param type="data" name="input2" format="tabular" label="Tab-separated file with chromosome names and their sizes (can be obtained from crhomInfo table in UCSC or with faSize from Kent utils)"/>
+        <param type="text" name="sample" value="Test" label="Sample name (used as plot header)" />
     </inputs>
     <outputs>
-        <data name="output1" format="pdf" label="${tool.name} on ${on_string}: PDF"/>
-        <data name="output2" format="tabular" label="${tool.name} on ${on_string}: tabular"/>
+        <data name="output1" format="pdf" label="${sample} ${tool.name} on ${on_string} (PDF plot)"/>
+        <data name="output2" format="tabular" label="${sample} ${tool.name} on ${on_string} (tabular)"/>
     </outputs>
     <tests>
         <test>

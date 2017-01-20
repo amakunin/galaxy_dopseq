@@ -2,7 +2,6 @@ name: contam_filter
 owner: drevoz
 description: Filter contaminant reads
 long_description: Python script to remove contaminant reads of known origin based on alignment to two genomes - target and contaminant.
-homepage_url: 
-remote_repository_url: 
+homepage_url: https://github.com/drevoz/galaxy_dopseq/tree/master/tools/contam_filter
 categories:
 - SAM

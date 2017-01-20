@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="iuc" prior_installation_required="True" toolshed="https://testtoolshed.g2.bx.psu.edu" />
+    </package>
+    <package name="dnacopy" version="1.48.0">
+        <install version="1.0">
+            <actions>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="iuc" toolshed="https://testtoolshed.g2.bx.psu.edu">
+                            <package name="R" version="3.1.2" />
+                    </repository>
+                    <package>https://github.com/drevoz/galaxy_dopseq/blob/master/src/DNAcopy_1.48.0.tar.gz?raw=true</package>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="R_LIBS">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

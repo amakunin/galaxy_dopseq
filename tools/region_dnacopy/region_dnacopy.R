@@ -15,18 +15,20 @@
 # Argument4 - '.tsv' with regions
 
 # Package installation:
-if(require("DNAcopy")){
-  print("DNAcopy is loaded correctly")
-} else {
-  print("trying to install DNAcopy")
-  source("http://bioconductor.org/biocLite.R")
-  install.packages("DNAcopy")
-  if(require("DNAcopy")){
-    print("DNAcopy installed and loaded")
-  } else {
-    stop("could not install DNAcopy")
-  }
-}
+#if(require("DNAcopy")){
+#  print("DNAcopy is loaded correctly")
+#} else {
+#  print("trying to install DNAcopy")
+#  source("http://bioconductor.org/biocLite.R")
+#  biocLite("DNAcopy")
+#  if(require("DNAcopy")){
+#    print("DNAcopy installed and loaded")
+#  } else {
+#    stop("could not install DNAcopy")
+#  }
+#}
+# load library
+library("DNAcopy")
 
 # Parameter section
 args <- commandArgs(trailingOnly = TRUE)
