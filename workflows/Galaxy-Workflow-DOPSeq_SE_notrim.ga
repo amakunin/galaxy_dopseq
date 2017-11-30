@@ -1,0 +1,316 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "DOPSeq SE notrim", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Single-end reads fastq"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.99998474121094, 
+                "top": 213.4666748046875
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Single-end reads fastq\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "ed1147bb-7a4e-4eb3-bc08-36213085566a"
+        }, 
+        "1": {
+            "annotation": "", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Chromosome sizes"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.99998474121094, 
+                "top": 343.4666748046875
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Chromosome sizes\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "dc5e523b-78e6-4282-9ceb-5bdda93960b6"
+        }, 
+        "2": {
+            "annotation": "", 
+            "id": 2, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FASTQ Parallel Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 419.99998474121094, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/kevyin/fastq_groomer_parallel/fastq_groomer_parallel/0.3.0", 
+            "tool_state": "{\"__page__\": 0, \"input_file\": \"null\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"options_type_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "0.3.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "b7c0a601-009e-4c7c-b965-18e849f947ce"
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "library|input_1": {
+                    "id": 2, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Bowtie2", 
+            "outputs": [
+                {
+                    "name": "output_unaligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_unaligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "output_sam", 
+                    "type": "sam"
+                }, 
+                {
+                    "name": "mapping_stats", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 640, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.0", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"False\\\", \\\"unaligned_file\\\": \\\"False\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": null}\", \"reference_genome\": \"{\\\"source\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0, \\\"index\\\": {\\\"__class__\\\": \\\"UnvalidatedValue\\\", \\\"value\\\": \\\"hg19\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"False\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "2.3.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "c6c6ebdd-4329-4362-ad50-365c544eb964"
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 2, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 640, 
+                "top": 333.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.67", 
+            "tool_state": "{\"__page__\": 0, \"limits\": \"null\", \"input_file\": \"null\", \"__rerun_remap_job_id__\": null, \"contaminants\": \"null\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "0.67", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "8f88169c-7c7d-42ca-85ce-2ef9aa728170"
+        }, 
+        "5": {
+            "annotation": "", 
+            "id": 5, 
+            "input_connections": {
+                "input1": {
+                    "id": 3, 
+                    "output_name": "output"
+                }, 
+                "input2": {
+                    "id": 3, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter contaminant reads", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 860, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drevoz/contam_filter/contam_filter/0.1.0", 
+            "tool_state": "{\"input2\": \"null\", \"__page__\": 0, \"input1\": \"null\", \"__rerun_remap_job_id__\": null, \"minq\": \"\\\"20\\\"\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/hg19.len\\\"\"}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "46cb3fcf-c259-4df4-a3b5-ee1c31d6b163"
+        }, 
+        "6": {
+            "annotation": "", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "BAM to BED", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 1080, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_bamtobed/2.26.0.0", 
+            "tool_state": "{\"__page__\": 0, \"option\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"tag\": \"\\\"\\\"\", \"split\": \"\\\"False\\\"\", \"ed_score\": \"\\\"False\\\"\", \"input\": \"null\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/hg19.len\\\"\"}", 
+            "tool_version": "2.26.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "ba0be99f-7fbd-4c3c-b733-4cc35abce2f7"
+        }, 
+        "7": {
+            "annotation": "", 
+            "id": 7, 
+            "input_connections": {
+                "input": {
+                    "id": 6, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "MergeBED", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 1300, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_mergebed/2.26.0.0", 
+            "tool_state": "{\"distance\": \"\\\"0\\\"\", \"__page__\": 0, \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/hg19.len\\\"\", \"__rerun_remap_job_id__\": null, \"header\": \"\\\"False\\\"\", \"input\": \"null\", \"c_and_o_argument_repeat\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": \\\"count\\\", \\\"col\\\": {\\\"__class__\\\": \\\"UnvalidatedValue\\\", \\\"value\\\": \\\"1\\\"}}]\", \"strand\": \"\\\"\\\"\"}", 
+            "tool_version": "2.26.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "965ce58d-a0f7-4e7c-856f-22a6b9038efd"
+        }, 
+        "8": {
+            "annotation": "", 
+            "id": 8, 
+            "input_connections": {
+                "input1": {
+                    "id": 7, 
+                    "output_name": "output"
+                }, 
+                "input2": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Target regions", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "pdf"
+                }, 
+                {
+                    "name": "output2", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1520, 
+                "top": 213.4666748046875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drevoz/region_dnacopy/region_dnacopy/0.1.0", 
+            "tool_state": "{\"input2\": \"null\", \"__page__\": 0, \"input1\": \"null\", \"__rerun_remap_job_id__\": null, \"sample\": \"\\\"hsa_sSMC\\\"\", \"chromInfo\": \"\\\"/home/galaxy@mcb.nsc.ru/tool-data/shared/ucsc/chrom/hg19.len\\\"\"}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "e23c3a69-f1f5-4634-9bfc-5b6532058262"
+        }
+    }, 
+    "uuid": "a5d33bfd-baec-40f8-b36f-d1d9cfb1836c"
+}
